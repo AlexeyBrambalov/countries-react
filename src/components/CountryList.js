@@ -1,12 +1,11 @@
 import React from 'react'
-import data from '../data/countryData.json'
 
-export default function CountryList() {
-    console.log(data);
+export default function CountryList({filtedData}) {
+
     
     return (
         <div className="root">
-           { data.map((country, index) => 
+           { filtedData.map((country, index) => 
                 <div className="card" key={index}>
                     <img className="img" src={country.flag} alt="flag"/>
                     <div className="cardTitle">{country.name}</div>
