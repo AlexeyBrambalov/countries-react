@@ -15,6 +15,8 @@ function App() {
 
   const [clicked, setClicked] = useState({})
 
+  const [backClick, setBackClick] = useState(false)
+
 
 
   if(search){filtedData =  data.filter(country => country.name.toLowerCase().includes(search.toLowerCase()))}
@@ -29,15 +31,17 @@ function App() {
   console.log(clicked);
   
 
-
-
-
   return (
     <div className="App">
       <NavBar/>
-      
-      {clicked.name ?  <ClickedCountry clicked={clicked} data={data} setClicked={setClicked}/> : <><SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
-      <CountryList filtedData={filtedData} setClicked={setClicked}/></>} 
+      {backClick ? <>
+        <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
+        <CountryList filtedData={filtedData} setClicked={setClicked}/>
+      </> : ""}
+      {clicked.name ? <ClickedCountry clicked={clicked} data={data} setClicked={setClicked} setBackClick={setBackClick}/> : <>
+        <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
+        <CountryList filtedData={filtedData} setClicked={setClicked}/>
+      </>} 
     </div>
   );
 }
