@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import CountryList from './components/CountryList';
 import SearchNavbar from './components/SearchNavbar';
 import data from './data/countryData.json'
+import ClickedCountry from './components/ClickedCountry';
 
 function App() {
   let filtedData = data
@@ -11,6 +12,10 @@ function App() {
   const [search, setSearch] = useState("")
 
   const [select, setSelect] = useState("")
+
+  const [clicked, setClicked] = useState({})
+
+
 
   if(search){filtedData =  data.filter(country => country.name.toLowerCase().includes(search.toLowerCase()))}
 
@@ -21,6 +26,9 @@ function App() {
     filtedData = data.filter(country => country.region === select).filter(country => country.name.toLowerCase().includes(search.toLowerCase()))
   }
 
+  console.log(clicked);
+  
+
 
 
 
@@ -28,7 +36,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
-      <CountryList filtedData={filtedData}/>
+      {clicked.name ?  <ClickedCountry clicked={clicked} data={data} setClicked={setClicked}/> : <CountryList filtedData={filtedData} setClicked={setClicked}/>} 
     </div>
   );
 }
