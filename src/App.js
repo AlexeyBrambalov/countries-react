@@ -37,6 +37,7 @@ function App() {
       {backClick ? <>
         <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
         <CountryList filtedData={filtedData} setClicked={setClicked}/>
+        {setBackClick(false)}
       </> : ""}
       {clicked.name ? <ClickedCountry clicked={clicked} data={data} setClicked={setClicked} setBackClick={setBackClick}/> : <>
         <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>

@@ -4,9 +4,6 @@ export default function ClickedCountry({clicked, data, setClicked, setBackClick}
 
     let bordersArr = clicked.borders.map(border => border = data.filter( country=> country.alpha3Code === border)[0].name)
 
-    setBackClick(false)
-
-
 
     return (
         <>
