@@ -35,8 +35,9 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
-      {clicked.name ?  <ClickedCountry clicked={clicked} data={data} setClicked={setClicked}/> : <CountryList filtedData={filtedData} setClicked={setClicked}/>} 
+      
+      {clicked.name ?  <ClickedCountry clicked={clicked} data={data} setClicked={setClicked}/> : <><SearchNavbar setSearch={setSearch} setSelect={setSelect}/>
+      <CountryList filtedData={filtedData} setClicked={setClicked}/></>} 
     </div>
   );
 }
